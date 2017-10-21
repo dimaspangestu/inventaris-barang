@@ -1,7 +1,6 @@
 <ion-header>
     <ion-navbar color="primary">
         <ion-title>Rincian</ion-title>
-
         <ion-buttons end>
             <button ion-button item-end clear>
                 <ion-icon name="create"></ion-icon>
@@ -17,7 +16,7 @@
             <ion-card-title>
                 {{item.nama}}
             </ion-card-title>
-            <p>
+            <ion-list>
                 <ion-item>
                     Kategori
                     <ion-badge item-end>{{ item.kategori }}</ion-badge>
@@ -30,7 +29,7 @@
                     Harga beli
                     <ion-badge item-end>Rp. {{ item.harga }}</ion-badge>
                 </ion-item>
-            </p>
+            </ion-list>
         </ion-card-content>
     </ion-card>
 </ion-content>
