@@ -1,0 +1,44 @@
+<ion-header>
+    <ion-navbar color="primary">
+        <ion-title>
+            Daftar Barang
+            <h3>{{ kategori }}</h3>
+        </ion-title>
+
+        <ion-buttons end>
+            <button ion-button item-end clear>
+                <ion-icon name="create"></ion-icon>
+            </button>
+        </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <ion-searchbar (ionInput)="cariBarang($event)" placeholder="Cari barang..." *ngIf="daftarBarang.length > 0 || prosesPencarian"></ion-searchbar>
+    <div *ngIf="daftarBarang.length == 0">
+        <ion-card>
+            <ion-card-header>
+                Ups
+            </ion-card-header>
+            <ion-card-content>
+                Tidak ada barang pada kategori {{ kategori }}
+            </ion-card-content>
+        </ion-card>
+    </div>
+    <ion-list>
+        <ion-item *ngFor="let item of daftarBarang">
+            <ion-thumbnail item-start>
+                <img src="assets/img/{{ item.gambar }}">
+            </ion-thumbnail>
+            <h2>{{ item.nama }}</h2>
+            <p>{{ item.jumlah }} buah</p>
+            <button ion-button outline item-end (click)="keHalamanDetail(item)">Rincian</button>
+        </ion-item>
+    </ion-list>
+
+    <ion-fab bottom right>
+      <button ion-fab color="primary" (click)="tambahBarang()">
+          <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-fab>
+</ion-content>

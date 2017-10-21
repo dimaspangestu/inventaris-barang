@@ -1,0 +1,37 @@
+<ion-header>
+    
+    <ion-navbar color="primary">
+        <ion-title>TambahBarang</ion-title>
+    </ion-navbar>
+    
+</ion-header>
+
+
+<ion-content padding>
+    <ion-list>
+        <ion-item>
+            <ion-label floating>Nama Barang</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Jumlah Barang</ion-label>
+            <ion-input type="text"></ion-input>
+        </ion-item>
+            <ion-list>
+                <ion-item>
+                    <ion-label>Kategori</ion-label>
+                    <ion-select [(ngModel)]="kategori">
+                        <ion-option *ngFor="let kategori of daftarKategori" value="{{ kategori.nama }}">{{ kategori.nama }}</ion-option>
+                    </ion-select>
+                </ion-item>
+            </ion-list>
+    </ion-list>
+    
+    <button color="secondary" outline ion-button>
+        Pilih Gambar
+    </button>
+    
+    <button color="primary" outline ion-button (click)="kembali()">
+        Simpan
+    </button>
+</ion-content>
