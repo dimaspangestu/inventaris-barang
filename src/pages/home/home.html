@@ -1,14 +1,38 @@
 <ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
+    <ion-toolbar color="primary">
+    <ion-navbar>
+        <button ion-button menuToggle>
+            <ion-icon name="menu"></ion-icon>
+        </button>
+        <ion-title>
+            Inventaris Barang
+        </ion-title>
+    </ion-navbar>
+</ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-  Ini adlaah halaman awal
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+<ion-content padding class="card-background-page">
+    <ion-searchbar (ionInput)="getItems($event)" placeholder="Cari kategori..."></ion-searchbar>
+    <ion-grid>
+      <ion-row>
+        <ion-col col-6 *ngFor="let item of daftarKategori;">
+            <ion-card>
+                <img src="assets/img/barang1.jpg"/>
+                <div class="card-title">{{ item.nama }}</div>
+                <div class="card-subtitle">{{ item.jumlahBarang }}</div>
+            </ion-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+    <ion-list>
+        <ion-item *ngFor="let item of daftarBarang;">
+            <ion-thumbnail item-start>
+                <img src="assets/img/{{item.gambar}}">
+            </ion-thumbnail>
+            <h2>{{item.nama}}</h2>
+            <p>Rp. {{item.harga}}</p>
+            <ion-badge>{{item.kategori}}</ion-badge>
+            <button ion-button item-end (click)="detailPage(item)">Rincian</button>
+        </ion-item>
+    </ion-list>
 </ion-content>
